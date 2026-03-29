@@ -1,0 +1,335 @@
+{
+  "users": [
+    {
+      "id": "1774601608997",
+      "name": "yowan",
+      "email": "yowanofficial07@gmail.com",
+      "password": "$2a$10$9TNllGWINOiNK5tTTJto2.yloty.RBMM59DxZ/LdQOuDdcqoJ0yPq",
+      "createdAt": "2026-03-27T08:53:28.997Z"
+    },
+    {
+      "id": "1774605148342",
+      "name": "Abi",
+      "email": "abitessa2711@gmail.com",
+      "password": "$2a$10$9h4lVoQvIbHX.L0VATEDKOUC5d4McAnEvJmaWar/3cyZEchkJEiCq",
+      "createdAt": "2026-03-27T09:52:28.342Z"
+    },
+    {
+      "id": "1774767334331",
+      "name": "Test User",
+      "email": "test@example.com",
+      "password": "$2a$10$LRZiMKDzoQlWyE9btK4xVufgSs75CERZNAyfxqSAnopmJ.cJKIUZi",
+      "createdAt": "2026-03-29T06:55:34.331Z"
+    },
+    {
+      "id": "1774768044687",
+      "name": "yowan",
+      "email": "yowan@gmail.com",
+      "password": "$2a$10$djAzMaOBHinQCBQQk/bxAe6LOA8n2DS2w26R9G5fn5fLkfZ98Haba",
+      "createdAt": "2026-03-29T07:07:24.688Z"
+    },
+    {
+      "id": "1774768130274",
+      "name": "abi",
+      "email": "abi1@gmail.com",
+      "password": "$2a$10$.O/pfH1Tl2mwzElHolmnZe8ll52TfgV/lypptTIHf47ShKPS4ZW5O",
+      "createdAt": "2026-03-29T07:08:50.274Z"
+    },
+    {
+      "id": "1774775085472",
+      "name": "sam",
+      "email": "sam@gmail.com",
+      "password": "$2a$10$mWpsNiRTt7VJyAzWaijijelPOCckfRs9xfFS.uQuSP8iGfCAHXQ8i",
+      "createdAt": "2026-03-29T09:04:45.472Z"
+    },
+    {
+      "id": "1774775807954",
+      "name": "siga",
+      "email": "siga@gmail.com",
+      "password": "$2a$10$.43w.tUvCPXJzkiUX8dxYObrF90TS6E6I7TAv2gKIPQgY42eCi4w6",
+      "createdAt": "2026-03-29T09:16:47.954Z"
+    },
+    {
+      "id": "1774775908622",
+      "name": "muthu",
+      "email": "muthu@gmail.com",
+      "password": "$2a$10$oombyqyoZqpc8es5b5HWSeN5U7NVQPi0xFWQ58NlUSiwcsfslrE66",
+      "createdAt": "2026-03-29T09:18:28.622Z"
+    },
+    {
+      "id": "1774775959903",
+      "name": "muthu",
+      "email": "muthu1@gmail.com",
+      "password": "$2a$10$HI1S3TVYa25NXz0MhK3pLutkM63r0Xn/rFRFGLwAty5T5BJXnRCRK",
+      "createdAt": "2026-03-29T09:19:19.903Z"
+    },
+    {
+      "id": "1774776407210",
+      "name": "siga",
+      "email": "sigaa@gmail.com",
+      "password": "$2a$10$yWCuvML7usp950CGkKXQfeRJNGLqPJz37mC4fDL7UoJaT50QvO4Me",
+      "createdAt": "2026-03-29T09:26:47.210Z"
+    },
+    {
+      "id": "1774776871347",
+      "name": "deva",
+      "email": "deva@gmail.com",
+      "password": "$2a$10$PRhQpKJAAuY/4v8MkXdpaOYso4fbJ3Cymrs8w9N8wU1SR0QkVDvlC",
+      "createdAt": "2026-03-29T09:34:31.347Z"
+    }
+  ],
+  "interviews": [
+    {
+      "id": 1774601651714,
+      "transcript": "",
+      "confidenceScore": 90,
+      "stressScore": 0,
+      "feedback": "Excellent confidence maintained throughout. You remained calm under pressure. "
+    },
+    {
+      "id": 1774602678744,
+      "transcript": "",
+      "confidenceScore": 50,
+      "stressScore": 50,
+      "feedback": "Good overall confidence. Keep practising. You remained calm under pressure. "
+    },
+    {
+      "id": 1774605205159,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Tell me about yourself.",
+        "Tell me about yourself.",
+        "What are your greatest strengths?",
+        "Why do you want to work here?"
+      ],
+      "confidenceScore": 72,
+      "stressScore": 45,
+      "voiceScore": 100,
+      "contentScore": 0,
+      "totalScore": 50,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  You looked calm.",
+      "feedbackVoice": "Clear speech devoid of filler words! Good spoken pacing throughout. ",
+      "feedbackContent": "No vocal answers were registered by the microphone.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1774605787498,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Tell me about yourself.",
+        "Tell me about yourself.",
+        "What are your greatest strengths?",
+        "Why do you want to work here?"
+      ],
+      "confidenceScore": 0,
+      "stressScore": 100,
+      "voiceScore": 100,
+      "contentScore": 0,
+      "totalScore": 30,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  High tension detected.",
+      "feedbackVoice": "Clear speech devoid of filler words! Good spoken pacing throughout. ",
+      "feedbackContent": "No vocal answers were registered by the microphone.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1774605813129,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Tell me about a time you had to persuade someone who was strongly opposed to your idea.",
+        "Tell me about a time you had to persuade someone who was strongly opposed to your idea.",
+        "Describe a project that failed because of a mistake you made. How did you handle the aftermath?",
+        "Give me an example of a time when you had to manage multiple conflicting priorities from different stakeholders."
+      ],
+      "confidenceScore": 72,
+      "stressScore": 45,
+      "voiceScore": 100,
+      "contentScore": 0,
+      "totalScore": 50,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  You looked calm.",
+      "feedbackVoice": "Clear speech devoid of filler words! Good spoken pacing throughout. ",
+      "feedbackContent": "No vocal answers were registered by the microphone.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1774767674428,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Where do you see yourself in five years?",
+        "Where do you see yourself in five years?",
+        "Describe a time you disagreed with your manager.",
+        "How do you handle stress and pressure?"
+      ],
+      "confidenceScore": 80,
+      "stressScore": 25,
+      "voiceScore": 100,
+      "contentScore": 0,
+      "totalScore": 53,
+      "feedbackVisual": "Visual Analysis: Excellent eye contact!  You looked calm.",
+      "feedbackVoice": "Clear speech devoid of filler words! Good spoken pacing throughout. ",
+      "feedbackContent": "No vocal answers were registered by the microphone.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1774768087699,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Tell me about yourself.",
+        "Tell me about yourself.",
+        "What are your greatest strengths?",
+        "Why do you want to work here?"
+      ],
+      "confidenceScore": 24,
+      "stressScore": 0,
+      "voiceScore": 100,
+      "contentScore": 0,
+      "totalScore": 46,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  You looked calm.",
+      "feedbackVoice": "Clear speech devoid of filler words! Good spoken pacing throughout. ",
+      "feedbackContent": "No vocal answers were registered by the microphone.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1774768168124,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Tell me about a time you had to persuade someone who was strongly opposed to your idea.",
+        "Tell me about a time you had to persuade someone who was strongly opposed to your idea.",
+        "Describe a project that failed because of a mistake you made. How did you handle the aftermath?",
+        "Give me an example of a time when you had to manage multiple conflicting priorities from different stakeholders."
+      ],
+      "confidenceScore": 42,
+      "stressScore": 0,
+      "voiceScore": 100,
+      "contentScore": 0,
+      "totalScore": 50,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  You looked calm.",
+      "feedbackVoice": "Clear speech devoid of filler words! Good spoken pacing throughout. ",
+      "feedbackContent": "No vocal answers were registered by the microphone.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1774768957110,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Where do you see yourself in five years?",
+        "Where do you see yourself in five years?"
+      ],
+      "confidenceScore": 80,
+      "stressScore": 25,
+      "voiceScore": 100,
+      "contentScore": 0,
+      "totalScore": 53,
+      "feedbackVisual": "Visual Analysis: Excellent eye contact!  You looked calm.",
+      "feedbackVoice": "Clear speech devoid of filler words! Good spoken pacing throughout. ",
+      "feedbackContent": "No vocal answers were registered by the microphone.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1774769022809,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Where do you see yourself in five years?",
+        "Where do you see yourself in five years?",
+        "Describe a time you disagreed with your manager.",
+        "How do you handle stress and pressure?"
+      ],
+      "confidenceScore": 80,
+      "stressScore": 25,
+      "voiceScore": 100,
+      "contentScore": 0,
+      "totalScore": 53,
+      "feedbackVisual": "Visual Analysis: Excellent eye contact!  You looked calm.",
+      "feedbackVoice": "Clear speech devoid of filler words! Good spoken pacing throughout. ",
+      "feedbackContent": "No vocal answers were registered by the microphone.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1774769203473,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Tell me about yourself.",
+        "Tell me about yourself.",
+        "What are your greatest strengths?",
+        "Why do you want to work here?"
+      ],
+      "confidenceScore": 72,
+      "stressScore": 45,
+      "voiceScore": 100,
+      "contentScore": 0,
+      "totalScore": 50,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  You looked calm.",
+      "feedbackVoice": "Clear speech devoid of filler words! Good spoken pacing throughout. ",
+      "feedbackContent": "No vocal answers were registered by the microphone.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1774776921802,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Tell me about a time you had to deal with a difficult colleague.",
+        "Tell me about a time you had to deal with a difficult colleague.",
+        "Describe a situation where you had to adapt to a significant change at work.",
+        "Give an example of a goal you reached and tell me how you achieved it."
+      ],
+      "confidenceScore": 0,
+      "stressScore": 100,
+      "voiceScore": 100,
+      "contentScore": 0,
+      "totalScore": 30,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  High tension detected.",
+      "feedbackVoice": "Clear speech with minimal filler words. Good spoken pacing throughout. ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    }
+  ]
+}
