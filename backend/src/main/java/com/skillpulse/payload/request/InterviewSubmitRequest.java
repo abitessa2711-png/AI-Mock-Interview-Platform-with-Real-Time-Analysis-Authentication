@@ -14,4 +14,7 @@ public class InterviewSubmitRequest {
     private List<Integer> confidenceMetrics;
     private List<Integer> wpmMetrics;
     private List<String> transcriptSections;
+    private List<String> questionsAsked;
+    private Integer totalPauses;
+    private Integer totalFillers;
 }

@@ -61,12 +61,75 @@ public class InterviewController {
             if (avgStress > 70) feedback.append("Some high-stress indicators were detected. Working on calm breathing can help. ");
             else feedback.append("You remained impressively calm under the pressure of the interview questions. ");
     
+            // Content score placeholder
+            int contentScore = 0;
+            if (request.getTranscriptSections() != null && !request.getTranscriptSections().isEmpty()) {
+                contentScore = 50 + Math.min(50, request.getTranscriptSections().size() * 10);
+            }
+
+            // Voice Delivery Algorithm
+            int voiceScore = 100;
+            int totalFillers = request.getTotalFillers() != null ? request.getTotalFillers() : 0;
+            int totalPauses = request.getTotalPauses() != null ? request.getTotalPauses() : 0;
+            int avgWpm = (request.getWpmMetrics() == null || request.getWpmMetrics().isEmpty()) ? 0 : 
+                (int) Math.round(request.getWpmMetrics().stream()
+                    .filter(java.util.Objects::nonNull)
+                    .mapToInt(Integer::intValue)
+                    .average().orElse(0));
+
+            StringBuilder voiceFeedback = new StringBuilder();
+            boolean hasNoSpeech = (request.getTranscript() == null || request.getTranscript().trim().isEmpty()) && avgWpm == 0;
+            
+            if (hasNoSpeech) {
+                voiceScore = 0;
+                voiceFeedback.append("No clear speech detected. Please speak clearly into the microphone. ");
+            } else {
+                if (totalFillers > 5) {
+                    voiceScore -= Math.min(20, (totalFillers * 2));
+                    voiceFeedback.append("High usage of filler words detected (").append(totalFillers).append(" times). ");
+                } else if (totalFillers > 0) {
+                    voiceScore -= (totalFillers * 2);
+                    voiceFeedback.append("Some filler words detected. ");
+                } else {
+                    voiceFeedback.append("Clear speech with minimal filler words. ");
+                }
+
+                if (totalPauses > 3) {
+                    voiceScore -= Math.min(20, (totalPauses * 3));
+                    voiceFeedback.append("Frequent long pauses detected. ");
+                } else if (totalPauses > 0) {
+                    voiceScore -= (totalPauses * 2);
+                    voiceFeedback.append("A few pauses detected. ");
+                } else {
+                    voiceFeedback.append("Good spoken pacing throughout. ");
+                }
+
+                if (avgWpm > 0 && avgWpm < 100) {
+                    voiceScore -= Math.min(20, (int) Math.round((100 - avgWpm) * 0.4));
+                    voiceFeedback.append("Speaking pace was a bit slow (").append(avgWpm).append(" WPM). ");
+                } else if (avgWpm > 170) {
+                    voiceScore -= Math.min(20, (int) Math.round((avgWpm - 170) * 0.4));
+                    voiceFeedback.append("Speaking pace was quite fast (").append(avgWpm).append(" WPM). ");
+                } else {
+                    voiceFeedback.append("Excellent speaking rate. ");
+                }
+            }
+            voiceScore = Math.max(0, voiceScore);
+
             Interview interview = new Interview();
             interview.setUser(user);
-            interview.setTranscript(request.getTranscript());
+            interview.setTranscript(request.getTranscript() == null ? "" : request.getTranscript());
             interview.setConfidenceScore(avgConfidence);
             interview.setStressScore(avgStress);
+            interview.setVoiceScore(voiceScore);
+            interview.setContentScore(contentScore);
             interview.setFeedback(feedback.toString());
+            interview.setFeedbackVisual("Visual Analysis: " + (avgConfidence > 75 ? "Excellent eye contact! " : "Maintain steadier eye presence. ") + (avgStress > 70 ? "High tension detected." : "You looked calm."));
+            interview.setFeedbackVoice(voiceFeedback.toString());
+            // Need total score calculation
+            double visualTotal = (100 - avgStress) * 0.4 + avgConfidence * 0.6;
+            int totalScore = (int) Math.round((visualTotal * 0.3) + (voiceScore * 0.3) + (contentScore * 0.4));
+            interview.setTotalScore(totalScore);
             
             Interview saved = interviewRepository.save(interview);
             return ResponseEntity.ok(saved);

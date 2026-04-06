@@ -45,10 +45,11 @@ const LoginPage = () => {
                 e.target.reset();
             }
             
-            setSuccess(`✅ Welcome back, ${data.user.name}! Redirecting...`);
+            const userName = data?.user?.name || data?.name || "User";
+            setSuccess(`✅ Welcome back, ${userName}! Redirecting...`);
             
             setTimeout(() => {
-                navigate('/setup');
+                navigate('/');
             }, 1000);
         } catch (err) {
             console.error("Login Error:", err);

@@ -27,9 +27,21 @@ public class Interview {
 
     private Integer confidenceScore;
     private Integer stressScore;
+    private Integer voiceScore;
+    private Integer contentScore;
+    private Integer totalScore;
 
     @Column(columnDefinition = "TEXT")
     private String feedback;
+
+    @Column(columnDefinition = "TEXT")
+    private String feedbackVisual;
+
+    @Column(columnDefinition = "TEXT")
+    private String feedbackVoice;
+
+    @Column(columnDefinition = "TEXT")
+    private String feedbackContent;
 
     private LocalDateTime createdAt;
 

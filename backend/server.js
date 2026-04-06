@@ -190,24 +190,42 @@ app.post('/api/interview/submit', (req, res) => {
         
         let voiceFeedback = "";
         
-        if (totalFillers > 5) {
-             voiceScore -= Math.min(20, (totalFillers * 2));
-             voiceFeedback += `High usage of filler words detected (${totalFillers} times). `;
-        } else {
-             voiceFeedback += `Clear speech with minimal filler words. `;
-        }
+        // Base penalty if there is very little speech or silence
+        const hasNoSpeech = (!transcript || transcript.trim().length === 0) && avgWpm === 0;
 
-        if (totalPauses > 3) {
-             voiceScore -= Math.min(20, (totalPauses * 3));
-             voiceFeedback += `Frequent long pauses detected. `;
+        if (hasNoSpeech) {
+             voiceScore = 0;
+             voiceFeedback = "No clear speech detected. Please speak clearly into the microphone. ";
         } else {
-             voiceFeedback += `Good spoken pacing throughout. `;
-        }
+            if (totalFillers > 5) {
+                 voiceScore -= Math.min(20, (totalFillers * 2));
+                 voiceFeedback += `High usage of filler words detected (${totalFillers} times). `;
+            } else if (totalFillers > 0) {
+                 voiceScore -= (totalFillers * 2);
+                 voiceFeedback += `Some filler words detected. `;
+            } else {
+                 voiceFeedback += `Clear speech with minimal filler words. `;
+            }
 
-        if (avgWpm > 0 && avgWpm < 100) {
-             voiceScore -= 10;
-        } else if (avgWpm > 170) {
-             voiceScore -= 10;
+            if (totalPauses > 3) {
+                 voiceScore -= Math.min(20, (totalPauses * 3));
+                 voiceFeedback += `Frequent long pauses detected. `;
+            } else if (totalPauses > 0) {
+                 voiceScore -= (totalPauses * 2);
+                 voiceFeedback += `A few pauses detected. `;
+            } else {
+                 voiceFeedback += `Good spoken pacing throughout. `;
+            }
+
+            if (avgWpm > 0 && avgWpm < 100) {
+                 voiceScore -= Math.min(20, Math.round((100 - avgWpm) * 0.4));
+                 voiceFeedback += `Speaking pace was a bit slow (${avgWpm} WPM). `;
+            } else if (avgWpm > 170) {
+                 voiceScore -= Math.min(20, Math.round((avgWpm - 170) * 0.4));
+                 voiceFeedback += `Speaking pace was quite fast (${avgWpm} WPM). `;
+            } else {
+                 voiceFeedback += `Excellent speaking rate. `;
+            }
         }
         voiceScore = Math.max(0, voiceScore);
 

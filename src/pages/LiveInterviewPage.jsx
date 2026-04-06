@@ -11,12 +11,13 @@ const LiveInterviewPage = () => {
   const navigate = useNavigate();
   const category = state?.category || 'HR';
   const difficulty = state?.difficulty || 'Medium';
-  const questions = getQuestions(category, difficulty);
+  const [questions] = useState(() => getQuestions(category, difficulty));
   
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [timeLeft, setTimeLeft] = useState(120); 
   const [modelsLoaded, setModelsLoaded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isReadingQuestion, setIsReadingQuestion] = useState(false);
   
   // AI State (SILENT ACCUMULATION)
   const [sessionData, setSessionData] = useState({
@@ -97,6 +98,7 @@ const LiveInterviewPage = () => {
       }
       if (analysisInterval.current) clearInterval(analysisInterval.current);
       if (speechService.current) speechService.current.stop();
+      window.speechSynthesis.cancel();
     };
   }, []);
 
@@ -113,19 +115,52 @@ const LiveInterviewPage = () => {
     return () => clearInterval(metricTimer);
   }, []);
 
+  // Text-To-Speech for reading questions
+  useEffect(() => {
+    if (questions && questions[currentQuestionIdx]) {
+        // Cancel any ongoing speech
+        window.speechSynthesis.cancel();
+        setIsReadingQuestion(true);
+        
+        const utterance = new SpeechSynthesisUtterance(questions[currentQuestionIdx]);
+        utterance.rate = 0.85; // medium speed as requested
+        utterance.pitch = 1.0;
+        
+        // Find a natural sounding voice if available
+        const voices = window.speechSynthesis.getVoices();
+        const preferredVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Female') || v.name.includes('Google')));
+        if (preferredVoice) utterance.voice = preferredVoice;
+
+        utterance.onend = () => {
+             setIsReadingQuestion(false); // start the timer when finished
+        };
+        
+        utterance.onerror = () => {
+             setIsReadingQuestion(false); // fallback to start timer if audio fails
+        };
+
+        window.speechSynthesis.speak(utterance);
+    }
+    
+    // Clean up if unmounted
+    return () => window.speechSynthesis.cancel();
+  }, [currentQuestionIdx, questions]);
+
   // Timer logic
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 1) {
-           handleNextQuestion(false);
-           return 120;
-        }
-        return prev - 1;
-      });
+      if (!isReadingQuestion) {
+        setTimeLeft(prev => {
+          if (prev <= 1) {
+             handleNextQuestion(false);
+             return 120;
+          }
+          return prev - 1;
+        });
+      }
     }, 1000);
     return () => clearInterval(timer);
-  }, [currentQuestionIdx]);
+  }, [currentQuestionIdx, isReadingQuestion]);
 
   const handleNextQuestion = (forceSubmit = false) => {
     if (speechService.current) {
@@ -170,6 +205,7 @@ const LiveInterviewPage = () => {
 
   const submitInterview = async () => {
     setIsSubmitting(true);
+    window.speechSynthesis.cancel();
     if (speechService.current) speechService.current.stop();
     if (analysisInterval.current) clearInterval(analysisInterval.current);
 
@@ -244,9 +280,9 @@ const LiveInterviewPage = () => {
         </div>
         
         <div className="timer-display glass-card">
-           <Timer size={20} className={timeLeft < 30 ? 'pulse-red' : ''} />
-           <span className={timeLeft < 30 ? 'text-red' : ''}>
-             {formatTime(timeLeft)}
+           <Timer size={20} className={timeLeft < 30 && !isReadingQuestion ? 'pulse-red' : ''} />
+           <span className={timeLeft < 30 && !isReadingQuestion ? 'text-red' : ''}>
+             {isReadingQuestion ? 'Reading...' : formatTime(timeLeft)}
            </span>
         </div>
       </header>

@@ -22,7 +22,7 @@ const ProtectedRoute = ({ children }) => {
 const AuthRoute = ({ children }) => {
   const user = AuthService.getCurrentUser();
   if (user) {
-    return <Navigate to="/setup" replace />;
+    return <Navigate to="/" replace />;
   }
   return children;
 };
