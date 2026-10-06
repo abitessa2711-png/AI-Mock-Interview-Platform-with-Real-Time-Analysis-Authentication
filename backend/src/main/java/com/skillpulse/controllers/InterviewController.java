@@ -40,31 +40,39 @@ public class InterviewController {
             }
     
             // Safe calculation for metrics using optional and null-safe streams
-            int avgStress = (request.getStressMetrics() == null) ? 50 : 
+            // Default to 0 if no data is provided, rather than 50 (neutral/average)
+            int avgStress = (request.getStressMetrics() == null || request.getStressMetrics().isEmpty()) ? 0 : 
                 (int) Math.round(request.getStressMetrics().stream()
                     .filter(java.util.Objects::nonNull)
                     .mapToInt(Integer::intValue)
-                    .average().orElse(50));
+                    .average().orElse(0));
                 
-            int avgConfidence = (request.getConfidenceMetrics() == null) ? 50 : 
+            int avgConfidence = (request.getConfidenceMetrics() == null || request.getConfidenceMetrics().isEmpty()) ? 0 : 
                 (int) Math.round(request.getConfidenceMetrics().stream()
                     .filter(java.util.Objects::nonNull)
                     .mapToInt(Integer::intValue)
-                    .average().orElse(50));
+                    .average().orElse(0));
     
             // Feedback synthesis
             StringBuilder feedback = new StringBuilder();
             if (avgConfidence > 75) feedback.append("Excellent confidence maintained! ");
-            else if (avgConfidence < 40) feedback.append("Try to maintain better eye contact and posture to project confidence. ");
+            else if (avgConfidence > 0 && avgConfidence < 40) feedback.append("Try to maintain better eye contact and posture to project confidence. ");
+            else if (avgConfidence == 0) feedback.append("Visual presence not detected or inconsistent. ");
             else feedback.append("Your confidence levels were steady. ");
             
             if (avgStress > 70) feedback.append("Some high-stress indicators were detected. Working on calm breathing can help. ");
-            else feedback.append("You remained impressively calm under the pressure of the interview questions. ");
+            else if (avgStress > 0) feedback.append("You remained impressively calm under the pressure of the interview questions. ");
     
-            // Content score placeholder
+            // Content Analysis - Word Count Based
             int contentScore = 0;
-            if (request.getTranscriptSections() != null && !request.getTranscriptSections().isEmpty()) {
-                contentScore = 50 + Math.min(50, request.getTranscriptSections().size() * 10);
+            String fullTranscript = request.getTranscript() != null ? request.getTranscript().trim() : "";
+            int wordCount = fullTranscript.isEmpty() ? 0 : fullTranscript.split("\\s+").length;
+            
+            // Assume 5 questions. Excellent content usually averages ~50 words per answer.
+            // Target: 250 words total for a 100% content score.
+            int targetWords = 250; 
+            if (wordCount > 5) {
+                contentScore = (int) Math.min(100, Math.round(((double)wordCount / targetWords) * 100));
             }
 
             // Voice Delivery Algorithm
@@ -78,14 +86,16 @@ public class InterviewController {
                     .average().orElse(0));
 
             StringBuilder voiceFeedback = new StringBuilder();
-            boolean hasNoSpeech = (request.getTranscript() == null || request.getTranscript().trim().isEmpty()) && avgWpm == 0;
+            // Stricter no-speech detection: less than 15 words is considered "failure to engage"
+            boolean hasNoSpeech = wordCount < 15 && avgWpm == 0;
             
             if (hasNoSpeech) {
                 voiceScore = 0;
-                voiceFeedback.append("No clear speech detected. Please speak clearly into the microphone. ");
+                contentScore = 0; // Force content to 0 as well if voice is missing
+                voiceFeedback.append("No significant speech detected. Performance score heavily impacted. Please ensure your microphone is working and you participate actively. ");
             } else {
                 if (totalFillers > 5) {
-                    voiceScore -= Math.min(20, (totalFillers * 2));
+                    voiceScore -= Math.min(30, (totalFillers * 3)); // Increased penalty
                     voiceFeedback.append("High usage of filler words detected (").append(totalFillers).append(" times). ");
                 } else if (totalFillers > 0) {
                     voiceScore -= (totalFillers * 2);
@@ -95,7 +105,7 @@ public class InterviewController {
                 }
 
                 if (totalPauses > 3) {
-                    voiceScore -= Math.min(20, (totalPauses * 3));
+                    voiceScore -= Math.min(30, (totalPauses * 4)); // Increased penalty
                     voiceFeedback.append("Frequent long pauses detected. ");
                 } else if (totalPauses > 0) {
                     voiceScore -= (totalPauses * 2);
@@ -104,13 +114,13 @@ public class InterviewController {
                     voiceFeedback.append("Good spoken pacing throughout. ");
                 }
 
-                if (avgWpm > 0 && avgWpm < 100) {
-                    voiceScore -= Math.min(20, (int) Math.round((100 - avgWpm) * 0.4));
+                if (avgWpm > 0 && avgWpm < 110) {
+                    voiceScore -= Math.min(25, (int) Math.round((110 - avgWpm) * 0.5));
                     voiceFeedback.append("Speaking pace was a bit slow (").append(avgWpm).append(" WPM). ");
                 } else if (avgWpm > 170) {
-                    voiceScore -= Math.min(20, (int) Math.round((avgWpm - 170) * 0.4));
+                    voiceScore -= Math.min(25, (int) Math.round((avgWpm - 170) * 0.5));
                     voiceFeedback.append("Speaking pace was quite fast (").append(avgWpm).append(" WPM). ");
-                } else {
+                } else if (avgWpm > 0) {
                     voiceFeedback.append("Excellent speaking rate. ");
                 }
             }
@@ -118,17 +128,27 @@ public class InterviewController {
 
             Interview interview = new Interview();
             interview.setUser(user);
-            interview.setTranscript(request.getTranscript() == null ? "" : request.getTranscript());
+            interview.setTranscript(fullTranscript);
             interview.setConfidenceScore(avgConfidence);
             interview.setStressScore(avgStress);
             interview.setVoiceScore(voiceScore);
             interview.setContentScore(contentScore);
             interview.setFeedback(feedback.toString());
-            interview.setFeedbackVisual("Visual Analysis: " + (avgConfidence > 75 ? "Excellent eye contact! " : "Maintain steadier eye presence. ") + (avgStress > 70 ? "High tension detected." : "You looked calm."));
+            
+            String visualFeedback = "Visual Analysis: ";
+            if (avgConfidence == 0 && avgStress == 0) {
+                visualFeedback += "No visual data recorded. ";
+            } else {
+                visualFeedback += (avgConfidence > 75 ? "Excellent eye contact! " : "Maintain steadier eye presence. ");
+                visualFeedback += (avgStress > 70 ? "High tension detected." : "You looked calm.");
+            }
+            interview.setFeedbackVisual(visualFeedback);
             interview.setFeedbackVoice(voiceFeedback.toString());
-            // Need total score calculation
-            double visualTotal = (100 - avgStress) * 0.4 + avgConfidence * 0.6;
-            int totalScore = (int) Math.round((visualTotal * 0.3) + (voiceScore * 0.3) + (contentScore * 0.4));
+            
+            // Recalculate component totals for overall result
+            // If data is missing (0), visual score should be 0, not (100-0)*0.4 = 40.
+            double visualContribution = (avgConfidence == 0 && avgStress == 0) ? 0 : ((100 - avgStress) * 0.4 + avgConfidence * 0.6);
+            int totalScore = (int) Math.round((visualContribution * 0.3) + (voiceScore * 0.3) + (contentScore * 0.4));
             interview.setTotalScore(totalScore);
             
             Interview saved = interviewRepository.save(interview);

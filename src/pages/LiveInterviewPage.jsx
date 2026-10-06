@@ -5,6 +5,7 @@ import { Timer, ArrowRight, SkipForward, TriangleAlert, StopCircle } from 'lucid
 import { getQuestions } from '../services/InterviewManager';
 import { loadModels, analyzeFace } from '../services/FaceAnalysisService';
 import { SpeechAnalysisService } from '../services/SpeechAnalysisService';
+import { submitInterviewData } from '../services/interviewService';
 
 const LiveInterviewPage = () => {
   const { state } = useLocation();
@@ -229,24 +230,11 @@ const LiveInterviewPage = () => {
         totalFillers: finalFillers
     };
 
-    const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
-
     try {
-        const response = await fetch(`${BASE_URL}/api/interview/submit`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(payload)
-        });
-
-        if (!response.ok) throw new Error("Submission Failed");
-        const data = await response.json();
-        
-        navigate(`/dashboard`, { state: { interviewId: data.id } });
+        const result = await submitInterviewData(payload);
+        navigate(`/dashboard`, { state: { interviewId: result.id, interviewData: result } });
     } catch (err) {
-        console.error(err);
+        console.error("Submission Error:", err);
         alert("Failed to submit interview data.");
         setIsSubmitting(false);
     }

@@ -1,7 +1,40 @@
+import { supabase } from './supabaseClient';
+
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const authService = {
   signupUser: async (userData) => {
+    // 1. Try Supabase Auth first
+    try {
+      const { data: sbData, error: sbError } = await supabase.auth.signUp({
+        email: userData.email,
+        password: userData.password,
+        options: {
+          data: { name: userData.name }
+        }
+      });
+
+      if (!sbError && sbData?.user) {
+        const userObj = {
+          id: sbData.user.id,
+          name: userData.name,
+          email: sbData.user.email
+        };
+        const payload = {
+          message: "Signup successful via Supabase!",
+          user: userObj,
+          token: sbData.session?.access_token || `sb-${sbData.user.id}`
+        };
+        localStorage.setItem("user", JSON.stringify(payload));
+        return payload;
+      } else if (sbError) {
+        console.warn("Supabase signup note:", sbError.message);
+      }
+    } catch (err) {
+      console.warn("Supabase signup fallback:", err);
+    }
+
+    // 2. Fallback to Express backend API
     const res = await fetch(`${BASE_URL}/api/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -19,6 +52,34 @@ const authService = {
   },
 
   loginUser: async (credentials) => {
+    // 1. Try Supabase Auth first
+    try {
+      const { data: sbData, error: sbError } = await supabase.auth.signInWithPassword({
+        email: credentials.email,
+        password: credentials.password
+      });
+
+      if (!sbError && sbData?.user) {
+        const userObj = {
+          id: sbData.user.id,
+          name: sbData.user.user_metadata?.name || credentials.email.split('@')[0],
+          email: sbData.user.email
+        };
+        const payload = {
+          message: "Login successful via Supabase!",
+          token: sbData.session?.access_token || `sb-${sbData.user.id}`,
+          user: userObj
+        };
+        localStorage.setItem("user", JSON.stringify(payload));
+        return payload;
+      } else if (sbError) {
+        console.warn("Supabase login notice:", sbError.message);
+      }
+    } catch (err) {
+      console.warn("Supabase login fallback:", err);
+    }
+
+    // 2. Fallback to Express backend API
     const res = await fetch(`${BASE_URL}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -47,7 +108,12 @@ const authService = {
     return data;
   },
 
-  logout: () => {
+  logout: async () => {
+    try {
+      await supabase.auth.signOut();
+    } catch (e) {
+      console.warn("Supabase signOut:", e);
+    }
     localStorage.removeItem("user");
   },
 

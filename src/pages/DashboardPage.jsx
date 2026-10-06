@@ -2,30 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Award, Brain, Activity, Clock, RefreshCcw, Home } from 'lucide-react';
+import { getInterviewResult } from '../services/interviewService';
 
 const DashboardPage = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const [result, setResult] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [result, setResult] = useState(state?.interviewData || null);
+  const [loading, setLoading] = useState(!state?.interviewData);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (state?.interviewData) {
+      setResult(state.interviewData);
+      setLoading(false);
+      return;
+    }
+
     const fetchResult = async () => {
         if (!state?.interviewId) {
             navigate('/');
             return;
         }
         try {
-            const userString = localStorage.getItem("user");
-            const token = userString ? JSON.parse(userString).token : null;
-            const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
-            const res = await fetch(`${BASE_URL}/api/interview/result/${state.interviewId}`, {
-                headers: { "Authorization": `Bearer ${token}` }
-            });
-
-            if (!res.ok) throw new Error("Could not fetch interview results.");
-            const data = await res.json();
+            const data = await getInterviewResult(state.interviewId);
             setResult(data);
         } catch (err) {
             setError(err.message);

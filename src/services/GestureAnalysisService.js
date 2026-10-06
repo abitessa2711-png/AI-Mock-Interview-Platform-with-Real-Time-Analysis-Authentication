@@ -143,7 +143,7 @@ export const analyzeGesture = async (videoElement) => {
 
     // ── 4. BODY LEAN ENGAGEMENT ──────────────────────────────────────────────────
     // Compare shoulder midpoint x vs hip midpoint x to detect lean
-    let engagementScore = 75; // neutral default
+    let engagementScore = 30; // lower baseline default
     let engagementNote  = 'Neutral body posture.';
 
     if (leftShoulder && rightShoulder && leftHip && rightHip) {

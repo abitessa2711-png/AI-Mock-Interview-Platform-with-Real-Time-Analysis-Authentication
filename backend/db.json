@@ -132,6 +132,34 @@
       "email": "joy@gmail.com",
       "password": "$2a$10$FOvz19cicE4SdLHEK6qdo.F43rYC8CCzNDhsqPT7aXo4Z/PriB3Gm",
       "createdAt": "2026-04-06T09:09:47.842Z"
+    },
+    {
+      "id": "1775809890060",
+      "name": "abi",
+      "email": "abi@gmail.com",
+      "password": "$2a$10$z50C7Q250nLKaZ96sOePmexzhUUmQ6/UILl.t8UVO/mlGsE29NrjG",
+      "createdAt": "2026-04-10T08:31:30.060Z"
+    },
+    {
+      "id": "1776179968123",
+      "name": "testing",
+      "email": "testing@gmail.com",
+      "password": "$2a$10$B5I5WivBuXqunmMiQqdUz./awhRnvdaOMjPGXXgHi5D8nUA61QkOC",
+      "createdAt": "2026-04-14T15:19:28.123Z"
+    },
+    {
+      "id": "1776742163245",
+      "name": "user1",
+      "email": "user1@gmail.com",
+      "password": "$2a$10$Zm8p7oItyyZTw7HbuV3dwuIDzQDD1BFQ.l7CBZVo99ic24CpmNyXO",
+      "createdAt": "2026-04-21T03:29:23.245Z"
+    },
+    {
+      "id": "1776754639731",
+      "name": "user",
+      "email": "user@gmail.com",
+      "password": "$2a$10$MxcBQVa6iCVHIGBlUM6O5.6hjRqvn.wuhVcqWT6nWcZpBQX5qwX2e",
+      "createdAt": "2026-04-21T06:57:19.731Z"
     }
   ],
   "interviews": [
@@ -747,6 +775,328 @@
       "contentScore": 0,
       "totalScore": 18,
       "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  You looked calm.",
+      "feedbackVoice": "No clear speech detected. Please speak clearly into the microphone. ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1775809980462,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Tell me about a time you heavily advocated for an unpopular idea.",
+        "Tell me about a time you heavily advocated for an unpopular idea.",
+        "What is your greatest professional failure, and what did you learn from it?",
+        "How would you handle a colleague who is constantly undermining your authority?",
+        "Give an example of how you navigated a complex ethical dilemma at work.",
+        "Tell me about a time you had to fire someone or relay extremely negative feedback."
+      ],
+      "confidenceScore": 27,
+      "stressScore": 75,
+      "voiceScore": 0,
+      "contentScore": 0,
+      "totalScore": 8,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  High tension detected.",
+      "feedbackVoice": "No clear speech detected. Please speak clearly into the microphone. ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1776180101927,
+      "transcript": "If you were the CEO of this company, what is the first strategic goal you would pursue? | Next Q: describe a time you had to pivot a | Next Q: describe a time you had to pivot a major project at the last tell me about a time you heavily advocated for an",
+      "transcriptSections": [
+        "If you were the CEO of this company, what is the first strategic goal you would pursue?",
+        "describe a time you had to pivot a",
+        "describe a time you had to pivot a major project at the last tell me about a time you heavily advocated for an"
+      ],
+      "questionsAsked": [
+        "What is your greatest professional failure, and what did you learn from it?",
+        "What is your greatest professional failure, and what did you learn from it?",
+        "Give an example of how you navigated a complex ethical dilemma at work.",
+        "If you were the CEO of this company, what is the first strategic goal you would pursue?",
+        "Describe a time you had to pivot a major project at the last minute due to external factors.",
+        "Tell me about a time you heavily advocated for an unpopular idea."
+      ],
+      "confidenceScore": 100,
+      "stressScore": 0,
+      "voiceScore": 80,
+      "contentScore": 40,
+      "totalScore": 70,
+      "feedbackVisual": "Visual Analysis: Excellent eye contact!  You looked calm.",
+      "feedbackVoice": "Clear speech with minimal filler words. Good spoken pacing throughout. Speaking pace was a bit slow (33 WPM). ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 33,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1776181250841,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Tell me about yourself of your educational background and hobbies.",
+        "Tell me about yourself of your educational background and hobbies.",
+        "What are your greatest professional strengths?",
+        "Why do you want to work for our company?",
+        "What do you consider to be your weaknesses?",
+        "Why should we hire you over other candidates?"
+      ],
+      "confidenceScore": 17,
+      "stressScore": 83,
+      "voiceScore": 0,
+      "contentScore": 0,
+      "totalScore": 5,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  High tension detected.",
+      "feedbackVoice": "No clear speech detected. Please speak clearly into the microphone. ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1776181290793,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Can you explain the event loop in Node.js and how it handles asynchronous operations?",
+        "Can you explain the event loop in Node.js and how it handles asynchronous operations?",
+        "Explain the concept of dependency injection in software architecture.",
+        "What is CORS and why is it important in web development?",
+        "Explain what a database index is and how it improves performance.",
+        "Describe the differences and use cases between REST and GraphQL."
+      ],
+      "confidenceScore": 100,
+      "stressScore": 0,
+      "voiceScore": 0,
+      "contentScore": 0,
+      "totalScore": 30,
+      "feedbackVisual": "Visual Analysis: Excellent eye contact!  You looked calm.",
+      "feedbackVoice": "No clear speech detected. Please speak clearly into the microphone. ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1776227516192,
+      "transcript": "no | Next Q: Mandar Surragni.",
+      "transcriptSections": [
+        "no",
+        "Mandar Surragni."
+      ],
+      "questionsAsked": [
+        "Tell me about yourself of your educational background and hobbies.",
+        "Tell me about yourself of your educational background and hobbies.",
+        "Where do you see yourself in five years?",
+        "What motivates you to do your best work?",
+        "Why do you want to work for our company?",
+        "What do you consider to be your weaknesses?"
+      ],
+      "confidenceScore": 43,
+      "stressScore": 50,
+      "voiceScore": 100,
+      "contentScore": 20,
+      "totalScore": 52,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  You looked calm.",
+      "feedbackVoice": "Clear speech with minimal filler words. Good spoken pacing throughout. Excellent speaking rate. ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1776231686010,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Describe a time you had to pivot a major project at the last minute due to external factors.",
+        "Describe a time you had to pivot a major project at the last minute due to external factors.",
+        "If you were the CEO of this company, what is the first strategic goal you would pursue?",
+        "Tell me about a time you heavily advocated for an unpopular idea.",
+        "Give an example of how you navigated a complex ethical dilemma at work.",
+        "Describe a situation where a project failed miserably despite your best efforts."
+      ],
+      "confidenceScore": 100,
+      "stressScore": 0,
+      "voiceScore": 0,
+      "contentScore": 0,
+      "totalScore": 30,
+      "feedbackVisual": "Visual Analysis: Excellent eye contact!  You looked calm.",
+      "feedbackVoice": "No clear speech detected. Please speak clearly into the microphone. ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1776238427785,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Describe a time you disagreed with your manager and how you handled it.",
+        "Describe a time you disagreed with your manager and how you handled it.",
+        "How do you handle stress and tight deadlines?",
+        "How do you prioritize your work when you have multiple deadlines?",
+        "Tell me about a time you successfully managed a conflict within your team.",
+        "Tell me about a time you made a mistake and how you recovered from it."
+      ],
+      "confidenceScore": 100,
+      "stressScore": 0,
+      "voiceScore": 0,
+      "contentScore": 0,
+      "totalScore": 30,
+      "feedbackVisual": "Visual Analysis: Excellent eye contact!  You looked calm.",
+      "feedbackVoice": "No clear speech detected. Please speak clearly into the microphone. ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1776742259217,
+      "transcript": "Ian Team Diana sends the success on the party Celebrate Panama. | Next Q: I think I.",
+      "transcriptSections": [
+        "Ian Team Diana sends the success on the party Celebrate Panama.",
+        "I think I."
+      ],
+      "questionsAsked": [
+        "Tell me about a time you mentored a junior team member.",
+        "Tell me about a time you mentored a junior team member.",
+        "How do you celebrate successes within your team?",
+        "Describe a time you had to onboard a new team member.",
+        "How do you delegate tasks effectively?",
+        "Describe a time you led a small project or initiative."
+      ],
+      "confidenceScore": 0,
+      "stressScore": 100,
+      "voiceScore": 80,
+      "contentScore": 40,
+      "totalScore": 40,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  High tension detected.",
+      "feedbackVoice": "Clear speech with minimal filler words. Good spoken pacing throughout. Speaking pace was a bit slow (17 WPM). ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 17,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1776742341618,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "How do you foster a culture of innovation while maintaining strict operational standards?",
+        "How do you foster a culture of innovation while maintaining strict operational standards?",
+        "Tell me about a time you actively managed out a toxic high-performer.",
+        "Describe a time you successfully led a team through a major corporate crisis or restructuring.",
+        "How do you translate and align your team's daily routines with the broader corporate strategy?",
+        "Tell me about a time you inherited a team that was hostile to your leadership."
+      ],
+      "confidenceScore": 50,
+      "stressScore": 50,
+      "voiceScore": 0,
+      "contentScore": 0,
+      "totalScore": 15,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  You looked calm.",
+      "feedbackVoice": "No clear speech detected. Please speak clearly into the microphone. ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1776742419252,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "If a coworker asks you to keep a secret about a minor policy violation, what do you do?",
+        "If a coworker asks you to keep a secret about a minor policy violation, what do you do?",
+        "What would you do if you were given a critical task but didn't know how to complete it?",
+        "How would you respond if a client asks a question you don't confidently know the answer to?",
+        "If the internet went down for an hour in the office, how would you stay productive?",
+        "What would you do if you realized you made a calculation error on a report you just submitted?"
+      ],
+      "confidenceScore": 13,
+      "stressScore": 88,
+      "voiceScore": 0,
+      "contentScore": 0,
+      "totalScore": 4,
+      "feedbackVisual": "Visual Analysis: Maintain steadier eye presence.  High tension detected.",
+      "feedbackVoice": "No clear speech detected. Please speak clearly into the microphone. ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1776754805878,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "How do you prioritize your work when you have multiple deadlines?",
+        "How do you prioritize your work when you have multiple deadlines?",
+        "Describe a time when you had to adapt to a significant change at work.",
+        "Give me an example of a time you went above and beyond for a customer.",
+        "How do you handle constructive criticism from a superior?",
+        "Describe a time you disagreed with your manager and how you handled it."
+      ],
+      "confidenceScore": 91,
+      "stressScore": 0,
+      "voiceScore": 0,
+      "contentScore": 0,
+      "totalScore": 28,
+      "feedbackVisual": "Visual Analysis: Excellent eye contact!  You looked calm.",
+      "feedbackVoice": "No clear speech detected. Please speak clearly into the microphone. ",
+      "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
+      "rawMetrics": {
+        "avgWpm": 0,
+        "totalFillers": 0,
+        "totalPauses": 0
+      }
+    },
+    {
+      "id": 1776754945939,
+      "transcript": "",
+      "transcriptSections": [],
+      "questionsAsked": [
+        "Tell me about a time you worked successfully on a team.",
+        "Tell me about a time you worked successfully on a team.",
+        "Describe a time you had to learn a completely new skill quickly.",
+        "Tell me about a time you helped a colleague who was struggling.",
+        "What is your proudest professional achievement?",
+        "How do you usually handle receiving difficult feedback?"
+      ],
+      "confidenceScore": 96,
+      "stressScore": 0,
+      "voiceScore": 0,
+      "contentScore": 0,
+      "totalScore": 29,
+      "feedbackVisual": "Visual Analysis: Excellent eye contact!  You looked calm.",
       "feedbackVoice": "No clear speech detected. Please speak clearly into the microphone. ",
       "feedbackContent": "Focus on the STAR method to provide more detailed, structure-rich responses.",
       "rawMetrics": {
